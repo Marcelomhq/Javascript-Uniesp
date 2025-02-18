@@ -3,6 +3,13 @@ function subTexto(tag,texto){
     campo.innerHTML = texto;
 }
 
+function hiddenStatus(){
+    for (let i =0; i<arguments.length;i++){
+        console.log(arguments[i]);
+        document.querySelector(arguments[i]).classList.remove("hidden");
+    }
+}
+
 subTexto('h1','Atividade 1 - Going Further.')
 subTexto('h2','Atividade extra com intuito de aprofundar meu conhecimento em javascript usando a atividade do Professor Glaucio da materia Front-End 2');
 const qtdPessoasRecebidas = false;
