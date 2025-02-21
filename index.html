@@ -21,11 +21,20 @@
       
       Após o término da atividade, o aluno deve disponibilizar o link do seu github com a
       resposta.</p>
-    <input id="campoQuantidadePessoas" placeholder="Quantas pessoas serao inseridas">
-    <button id="butaoComecar" onclick="qtdPessoas()">Comecar</button>
-    <input id="nomePessoa" placeholder="nome" class="hidden">
-    <input id="alturaPessoa" placeholder="altura" class="hidden">
-    <input id="generoPessoa" placeholder="genero" class="hidden">
+    
+    <div id="divQuantidadePessoas">
+      <input id="campoQuantidadePessoas" placeholder="Quantas pessoas serao inseridas">
+      <button id="butaoComecar" onclick="qtdPessoas()">Comecar</button>
+    </div>
+    
+    <div id="divAtributosPessoas" class="hidden">
+      <input id="nomePessoa" placeholder="Nome" class="atributosPessoas">
+      <input id="alturaPessoa" class="atributosPessoas" placeholder="Altura em cm">
+      <input id="generoPessoa" class="atributosPessoas" placeholder="Genero (M/F)">
+      <button id="butaoAtributos" onclick="adicionarAtributos()">Adicionar</button>
+    </div>
+    
+    
   
   </div>
   <script src="goingFurther.js"></script>
