@@ -1,15 +1,29 @@
+:root{
+    --butao-width: 100px;
+    --gap: 10px;
+}
+
+input:invalid{
+    border: 2px solid red;
+}
+
 #paginaToda{
-    display: flexbox;
+    display: flex;
+    flex-direction: column;
     height: 100%;
-    margin: 0px,0px,0px,0px;
-    border: 0px,0px,0px,0px;
-    margin: 0px,0px,0px,0px;
+    max-width: 800px;
+    min-width: 800px;
+    padding-left: 5px;  
 }
 .titulo{
     display: block;
     border-radius: 1px;
     border-color: red;
     border-style: solid;
+}
+
+.subtitulo{
+    margin: 0px 0px 0px 0px;
 }
 #campoQuantidadePessoas{
     display: inline-block;
@@ -20,27 +34,43 @@
     border-radius: 10px;   
 }
 
-#butaoComecar,#butaoAtributos{
-    display: block;
+#divAtributosPessoas{
+    max-width: 800px;
+    margin: 0px;
+}
+
+#divCampoAtributos{
+    display: flex;
+    gap: var(--gap);
+    margin-bottom: var(--gap);    
+}
+
+#divCampoAtributos input{
+    flex: 1;
+    height: 40px;
+}
+
+#divButoesAtributos{
+    display: grid;
+    grid-template-columns: var(--butao-width) 1fr var(--butao-width);
+}
+
+#butaoComecar,#butaoAdicionar,#butaoRecomecar{
     margin-top: 10px;
     height: 30px;
     width: 100px;
 }
 
-#butaoComecar,#butaoAtributos:hover{
+#butaoComecar,#butaoAtributos,#butaoRecomecar:hover{
     cursor: pointer;
+}
+
+#butaoComecar{
+    display: block;
 }
 
 #texto{
     font-size: 20px;
-}
-
-.atributosPessoas{
-    display: inline-block;
-    width: 200px;
-    height: 40px;
-    margin-right: 10px;
-    text-indent: 10px;
 }
 
 .hidden{

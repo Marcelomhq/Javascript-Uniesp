@@ -23,15 +23,23 @@
       resposta.</p>
     
     <div id="divQuantidadePessoas">
-      <input id="campoQuantidadePessoas" placeholder="Quantas pessoas serao inseridas">
+      <input id="campoQuantidadePessoas" placeholder="Quantas pessoas serao inseridas" type="number" min="0" max="15" required>
       <button id="butaoComecar" onclick="qtdPessoas()">Comecar</button>
     </div>
     
     <div id="divAtributosPessoas" class="hidden">
-      <input id="nomePessoa" placeholder="Nome" class="atributosPessoas">
-      <input id="alturaPessoa" class="atributosPessoas" placeholder="Altura em cm">
-      <input id="generoPessoa" class="atributosPessoas" placeholder="Genero (M/F)">
-      <button id="butaoAtributos" onclick="adicionarAtributos()">Adicionar</button>
+      <div id="divCampoAtributos">
+        <input id="nomePessoa" placeholder="Nome" class="atributosPessoas" type="text">
+        <input id="alturaPessoa" class="atributosPessoas" placeholder="Altura em cm" type="number">
+        <input id="generoPessoa" class="atributosPessoas" placeholder="Genero (M/F)" type="radio">
+      </div>      
+      <div id="divButoesAtributos">
+        <button id="butaoAdicionar" onclick="validarAtributos()">Adicionar</button>
+        <div></div>
+        <button id="butaoRecomecar" onclick="recomecar()">Recomecar</button>      
+        
+      </div>
+      
     </div>
     
     

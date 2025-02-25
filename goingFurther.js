@@ -18,7 +18,8 @@ subTexto('h2','Atividade extra com intuito de aprofundar meu conhecimento em jav
 const qtdPessoasRecebidas = false;
 
 function qtdPessoas(){
-    let quantidadePessoas = document.querySelector("#campoQuantidadePessoas").value;
+    const documentoPessoas = document.getElementById('campoQuantidadePessoas');
+    let quantidadePessoas = documentoPessoas.value;
     quantidadePessoas = Number(quantidadePessoas);
     console.log(quantidadePessoas);
     if (!isNaN(quantidadePessoas) && Number.isInteger(quantidadePessoas) && quantidadePessoas >= 1 &&quantidadePessoas <= 15){
@@ -27,18 +28,74 @@ function qtdPessoas(){
         console.log('Valido',quantidadePessoas);        
         document.getElementById('divQuantidadePessoas').classList.add("hidden");
     } else{
+
         console.log('invalido');
     }
 }
 
 function validarNome(nomeP){
+    const checadorValidadeRegex = /^[A-Za-z ]+$/;
+    const removerEspacos = String(nomeP).trim();
 
+    if (removerEspacos.length > 1 && checadorValidadeRegex.test(removerEspacos)){
+        console.log('Nome Pessoa Valido');
+        return true;
+    } else{
+        console.log('Nome Pessoa Invalido');
+        return false;
+    }
+
+}
+
+function validarAltura(alturaP) {
+    if (!isNaN(alturaP) && Number.isInteger(alturaP) && alturaP >= 1 && alturaP <= 300) {
+        console.log('Altura Valida');
+        return true;        
+    } else {
+        console.log('Altura Invalida');
+        return false;
+    }
+}
+
+function validarGenero(generoP) {
+    const generoRegex = /^[MFmf]$/;
+
+    if (generoRegex.test(generoP) && generoP.length == 1) {
+        console.log('Genero valido');
+        return true;
+    } else {
+        console.log('Genero nao valido');
+        return false;
+    }
 }
 
 function validarAtributos(){
     const nomeP = document.getElementById('nomePessoa').value;
     const alturaP = document.getElementById('alturaPessoa').value;
     const generoP = document.getElementById('alturaPessoa').value
+
+    const nomeValido = validarNome(nomeP);
+    const alturaValido = validarAltura(alturaP);
+    const generoValido = validarGenero(generoP);
+
+    if (nomeValido == false) {
+        document.getElementById('nomePessoa').style.borderColor = 'red';
+        document.getElementById('nomePessoa').style.borderWidth = 'medium';      
+    } else{
+        document.getElementById('nomePessoa').style.borderColor = 'green';
+        document.getElementById('nomePessoa').style.borderWidth = 'none';
+    };
+
+    if (alturaValido == false) {
+        document.getElementById('alturaPessoa').style.borderColor = 'red'; 
+        document.getElementById('nomePessoa').style.borderWidth = 'medium';           
+    };
+
+    if (generoValido == false) {
+        document.getElementById('generoPessoa').style.borderColor = 'red';  
+        document.getElementById('nomePessoa').style.borderWidth = 'medium';          
+    };
+
 }
 
 
