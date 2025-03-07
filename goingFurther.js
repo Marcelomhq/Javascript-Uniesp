@@ -123,15 +123,20 @@ function adicionarLista(nomeP,alturaP,generoP){
     document.getElementById('alturaPessoa').value = '';
     document.getElementById('generoPessoa').value = '';
     counterPessoas += 1;
-    console.log(quantidadePessoas);
-    console.log(counterPessoas);
     if (counterPessoas == quantidadePessoas){
         document.getElementById('divAtributosPessoas').classList.add('hidden');
         document.getElementById('divResultadoFinal').classList.remove('hidden');
         maioresMenoresAltura();
         mediaAlturaM();
         numeroFeminino();
-        subTexto('listaTotal',`${listaPessoas}`);
+        subTexto('#listaTotal','Lista completa de pessoas inscritas: ');
+        document.getElementById('listaTotal').classList.remove('hidden');
+        let textoLista =''
+        for (let i = 0;i < listaPessoas.length;i++){
+            textoLista += `Pessoa ${i+1}: Nome ${listaPessoas[i][0]}, Altura ${listaPessoas[i][1]}cm, Genero: ${listaPessoas[i][2].toUpperCase()}. <br>`
+            
+        }
+        subTexto('#texto',textoLista);
         // document.getElementById('listaTotal').text = `${listaPessoas}`;
     }
 }
@@ -145,9 +150,7 @@ function maioresMenoresAltura(){
     }
     let maiorAltura = Math.max(...listaMasculina);
     let menorAltura = Math.min(...listaMasculina);
-    const aaaaaaa = `Maior altura entre os homens: ${maiorAltura} e a menor altura ${menorAltura}`
-    subTexto('maiorMenorAltura',aaaaaaa)
-    // document.getElementById('maiorMenorAltura').text = `Maior altura entre os homens: ${maiorAltura} e a menor altura ${menorAltura}`;
+    subTexto('#maiorMenorAltura',`Maior altura entre os homens: ${maiorAltura} e a menor altura ${menorAltura}`)
 }
 
 function numeroFeminino(){
@@ -157,7 +160,7 @@ function numeroFeminino(){
             qtd += 1;
         }
     }
-    subTexto('numeroMulheres',`Numero de mulheres inseridos foram ${qtd}.`)
+    subTexto('#numeroMulheres',`Numero de mulheres inseridos foram ${qtd}.`)
     // document.getElementById('numeroMulheres').text = `Numero de mulheres inseridos foram ${qtd}.`;
 }
 
@@ -173,8 +176,12 @@ function mediaAlturaM(){
     }
     let mediaM;
     mediaM = sum/countMales;
-    subTexto('mediaAlturaM',`Media de Altura Masculina ${mediaM}.`)
+    subTexto('#mediaAlturaM',`Media de Altura Masculina ${mediaM}.`)
     // document.getElementById('mediaAlturaM').text = `Media de Altura Masculina ${mediaM}.`;
+}
+
+function recomecar(){
+    location.reload();
 }
 
 
