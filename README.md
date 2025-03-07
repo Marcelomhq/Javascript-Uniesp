@@ -26,15 +26,11 @@ Project developed for academic purposes at UNIESP, featuring:
 1. Clone repository:
 git clone https://github.com/Marcelomhq/Javascript-Uniesp.git
 2. Open in browser:
-
-cd Javascript-Uniesp
 start index.html  # Windows
 open index.html  # MacOS
 
-📸 Preview
-Add a screenshot of your interface here (replace this text with actual image Markdown when available):
+## 🤝 Contributing
 
-🤝 Contributing
 Fork the project
 
 Create your feature branch (git checkout -b feature/AmazingFeature)
@@ -45,5 +41,5 @@ Push to the branch (git push origin feature/AmazingFeature)
 
 Open a Pull Request
 
-📄 License
+## 📄 License
 Distributed under the MIT License. See LICENSE for more information.
