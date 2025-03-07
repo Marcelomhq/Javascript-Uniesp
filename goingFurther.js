@@ -1,4 +1,6 @@
-let nome, altura,genero;
+let nome, altura,genero,quantidadePessoas,counterPessoas = 0;
+let listaPessoas =[];
+
 
 function subTexto(tag,texto){
     let campo = document.querySelector(tag);
@@ -19,7 +21,7 @@ const qtdPessoasRecebidas = false;
 
 function qtdPessoas(){
     const documentoPessoas = document.getElementById('campoQuantidadePessoas');
-    let quantidadePessoas = documentoPessoas.value;
+    quantidadePessoas = documentoPessoas.value;
     quantidadePessoas = Number(quantidadePessoas);
     console.log(quantidadePessoas);
     if (!isNaN(quantidadePessoas) && Number.isInteger(quantidadePessoas) && quantidadePessoas >= 1 &&quantidadePessoas <= 15){
@@ -71,8 +73,8 @@ function validarGenero(generoP) {
 
 function validarAtributos(){
     const nomeP = document.getElementById('nomePessoa').value;
-    const alturaP = document.getElementById('alturaPessoa').value;
-    const generoP = document.getElementById('alturaPessoa').value
+    const alturaP = parseInt(document.getElementById('alturaPessoa').value);
+    const generoP = document.getElementById('generoPessoa').value;
 
     const nomeValido = validarNome(nomeP);
     const alturaValido = validarAltura(alturaP);
@@ -80,7 +82,7 @@ function validarAtributos(){
 
     if (nomeValido == false) {
         document.getElementById('nomePessoa').style.borderColor = 'red';
-        document.getElementById('nomePessoa').style.borderWidth = 'medium';      
+        // document.getElementById('nomePessoa').style.borderWidth = 'medium';      
     } else{
         document.getElementById('nomePessoa').style.borderColor = 'green';
         document.getElementById('nomePessoa').style.borderWidth = 'none';
@@ -88,14 +90,91 @@ function validarAtributos(){
 
     if (alturaValido == false) {
         document.getElementById('alturaPessoa').style.borderColor = 'red'; 
-        document.getElementById('nomePessoa').style.borderWidth = 'medium';           
-    };
+        // document.getElementById('nomePessoa').style.borderWidth = 'medium';           
+    } else {
+        document.getElementById('alturaPessoa').style.borderColor = 'green';
+        document.getElementById('alturaPessoa').style.borderWidth = 'none';
+    }
 
     if (generoValido == false) {
         document.getElementById('generoPessoa').style.borderColor = 'red';  
-        document.getElementById('nomePessoa').style.borderWidth = 'medium';          
-    };
+        // document.getElementById('nomePessoa').style.borderWidth = 'medium';          
+    } else {
+        document.getElementById('generoPessoa').style.borderColor = 'green';
+        document.getElementById('generoPessoa').style.borderWidth = 'none';
+        
+    }
+    if (nomeValido && alturaValido && generoValido){
+        adicionarLista(nomeP,alturaP,generoP);
+    } else {
+        return false;
+    }
 
+}
+
+function adicionarLista(nomeP,alturaP,generoP){
+    
+    let listaNova = [nomeP,alturaP,generoP];
+    listaPessoas.push(listaNova);
+    console.log("adicionando a lista",listaNova);
+    console.log("Lista total",listaPessoas);
+    document.getElementById('texto').text = `Pessoa ${nomeP} do genero ${generoP} com altura ${alturaP}cm.`;
+    document.getElementById('nomePessoa').value = '';
+    document.getElementById('alturaPessoa').value = '';
+    document.getElementById('generoPessoa').value = '';
+    counterPessoas += 1;
+    console.log(quantidadePessoas);
+    console.log(counterPessoas);
+    if (counterPessoas == quantidadePessoas){
+        document.getElementById('divAtributosPessoas').classList.add('hidden');
+        document.getElementById('divResultadoFinal').classList.remove('hidden');
+        maioresMenoresAltura();
+        mediaAlturaM();
+        numeroFeminino();
+        subTexto('listaTotal',`${listaPessoas}`);
+        // document.getElementById('listaTotal').text = `${listaPessoas}`;
+    }
+}
+
+function maioresMenoresAltura(){
+    let listaMasculina = [];
+    for (let i = 0; i<listaPessoas.length;i++){
+        if (listaPessoas[i][2].toUpperCase() == 'M'){
+            listaMasculina.push(listaPessoas[i][1]);
+        }
+    }
+    let maiorAltura = Math.max(...listaMasculina);
+    let menorAltura = Math.min(...listaMasculina);
+    const aaaaaaa = `Maior altura entre os homens: ${maiorAltura} e a menor altura ${menorAltura}`
+    subTexto('maiorMenorAltura',aaaaaaa)
+    // document.getElementById('maiorMenorAltura').text = `Maior altura entre os homens: ${maiorAltura} e a menor altura ${menorAltura}`;
+}
+
+function numeroFeminino(){
+    let qtd = 0;
+    for (let i = 0; i<listaPessoas.length;i++){
+        if (listaPessoas[i][2].toUpperCase() == 'F'){
+            qtd += 1;
+        }
+    }
+    subTexto('numeroMulheres',`Numero de mulheres inseridos foram ${qtd}.`)
+    // document.getElementById('numeroMulheres').text = `Numero de mulheres inseridos foram ${qtd}.`;
+}
+
+function mediaAlturaM(){
+    
+    let sum = 0;
+    let countMales = 0;
+    for (let i = 0; i<listaPessoas.length;i++){
+        if (listaPessoas[i][2].toUpperCase() == 'M'){
+            sum += listaPessoas[i][1];
+            countMales ++;
+        }
+    }
+    let mediaM;
+    mediaM = sum/countMales;
+    subTexto('mediaAlturaM',`Media de Altura Masculina ${mediaM}.`)
+    // document.getElementById('mediaAlturaM').text = `Media de Altura Masculina ${mediaM}.`;
 }
 
 
