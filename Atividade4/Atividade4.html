@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    function calcularTotal(preco,qtdComprada){
+      return preco*qtdComprada
+    }
+
+    function aplicarDesconto(valTotal){
+      return valTotal < 100? valTotal : valTotal*0.9
+    }
+
+    function exibirResumo(precoOriginal,precoDesconto){
+      return `Valor antes desconto: ${precoOriginal}. Valor final: ${precoDesconto}`
+    }
+
+    const preco = parseFloat(prompt("Digita o preco doidao "))
+    const qtdComprada = parseInt(prompt("E qtos vc vai levar "))
+
+    const valorTotal = calcularTotal(preco,qtdComprada)
+    const valorDesconto = aplicarDesconto(valorTotal)
+    
+    alert(exibirResumo(valorTotal,valorDesconto))
+  </script>
+</body>
+</html>
