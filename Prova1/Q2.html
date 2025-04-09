@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let listaNumeros = [];
+    for (let i = 0; i<10;i++){
+      let numTemp = prompt(`Digite o numero ${i+1}: `);
+      listaNumeros.push(numTemp)
+    }
+    let impares= 0;
+    for (let i =0; i<10;i++){
+      if (listaNumeros[i] %2){
+        impares++;
+      }
+    }
+    let pares = listaNumeros.length - impares;
+    console.log(`Pares: ${pares}
+    Impares: ${impares}.`)
+  </script>
+</body>
+</html>

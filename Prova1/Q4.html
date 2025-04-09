@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const anoContratado = 1995;
+    const salarioInicial = 1000;
+    const primeiraTaxa = 0.0015;
+    const primeiroAumento = salarioInicial*(primeiraTaxa+1);
+    let taxaAtual = primeiraTaxa;
+    let salarioAtual = primeiroAumento;
+    let anoAtual = anoContratado;
+
+    while (anoAtual < 2025){
+      taxaAtual = taxaAtual *2;
+      
+      salarioAtual = salarioAtual * (taxaAtual+1);
+      anoAtual++;
+
+      console.log(`Salario em ${anoAtual}: ${salarioAtual}.
+      Taxa de aumento atual: ${taxaAtual}.`);
+    }
+    alert(`Salario em ${anoAtual}: ${salarioAtual}.
+    Taxa de aumento atual: ${taxaAtual}.`);
+
+    let salarioUsuario = prompt("Digite seu salario agora: ");
+    let anoInicioUsuario = prompt("Digite o ano em que seu salario comecou: ");
+    let anoFinalUsuario = prompt("Digite o ano final para o calculo do seu salario");
+    taxaAtual = 0.0015;
+    if (anoAtual >= anoFinalUsuario){
+      alert("Erro, voce digitou um ano invalido, tente novamente");
+    } else {
+      while (anoAtual < anoFinalUsuario){
+        taxaAtual = taxaAtual * 2;
+        
+        salarioUsuario = salarioUsual * (taxaAtual+1);
+        anoInicioUsuario++;
+
+        console.log(`Salario em ${anoAtual}: ${salarioAtual}.
+        Taxa de aumento atual: ${taxaAtual}.`);
+      }
+      alert(`Salario em ${anoAtual}: ${salarioAtual}.
+      Taxa de aumento atual: ${taxaAtual}.`);
+    }
+    
+  </script>
+</body>
+</html>

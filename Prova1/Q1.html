@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let pop1 = 80000;
+    const taxaPop1 = 0.03;
+    let pop2 = 200000;
+    const taxaPop2 = 0.015;
+    let ano = 0;
+    while (pop1 <= pop2){
+      pop1+=(taxaPop1*pop1);
+      pop2+=(taxaPop2*pop2);
+      ano++;
+      // console.log(pop1);
+      // console.log(pop2);
+    }
+    console.log(`
+    Anos necessarios para populacao A passar da populacao B foi de ${ano} anos.
+    Populacao A final: ${pop1.toFixed(2)}
+    Populacao B final: ${pop2.toFixed(2)}
+    `);
+  </script>
+</body>
+</html>

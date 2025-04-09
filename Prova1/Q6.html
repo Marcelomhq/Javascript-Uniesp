@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const capital = prompt("Digite seu capital: ");
+    const taxaJurosMensal = prompt("Digite sua taxa de juros mensal em %: ");
+    const tempoInvestimento = prompt("Quantos meses vc vai deixar seu dinheiro rendendo: ");
+
+    let montante = capital * ((1 + taxaJurosMensal/100)**tempoInvestimento);
+    alert(`Montante final depois de ${tempoInvestimento} meses: ${montante.toFixed(2)}`);
+  </script>  
+</body>
+</html>
